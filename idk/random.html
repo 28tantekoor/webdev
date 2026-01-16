@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Side Hustle Studio | Book an Appointment</title>
+    <meta
+      name="description"
+      content="Side Hustle Studio helps you get expert support fast. Book an appointment or contact us to get started."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f7fb;
+        --card: #ffffff;
+        --text: #1d1f24;
+        --muted: #5a6270;
+        --accent: #5b5bff;
+        --accent-dark: #3a3acc;
+        --border: #e2e6ee;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      header {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: var(--text);
+        margin-left: 16px;
+        font-weight: 500;
+      }
+
+      .hero {
+        display: grid;
+        gap: 32px;
+        padding: 64px 0;
+        align-items: center;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 16px;
+      }
+
+      .hero-content p {
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .cta {
+        display: inline-flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        background: var(--accent);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .button.secondary {
+        background: #ffffff;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+      }
+
+      .button:hover {
+        background: var(--accent-dark);
+      }
+
+      .button.secondary:hover {
+        background: #f3f4ff;
+      }
+
+      .card-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        margin-bottom: 64px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+      }
+
+      .card h3 {
+        margin-top: 0;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 24px;
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .legal {
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 32px 0 48px;
+        border-top: 1px solid var(--border);
+        margin-top: 64px;
+      }
+
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: #eef0ff;
+        color: var(--accent-dark);
+        font-size: 0.8rem;
+        margin-bottom: 16px;
+      }
+
+      @media (min-width: 900px) {
+        .hero {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="logo">Side Hustle Studio</div>
+        <nav>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+          <a href="#legal">Legal</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <span class="tag">Now booking appointments</span>
+          <h1>Make your side hustle feel effortless.</h1>
+          <p>
+            We help busy founders, freelancers, and local brands run their
+            side-hustle operations with clarity. Book a session or reach out for
+            a customized plan.
+          </p>
+          <div class="cta">
+            <a
+              class="button"
+              href="https://forms.yourdomain.com/appointment"
+              target="_blank"
+              rel="noopener"
+            >
+              Schedule an Appointment
+            </a>
+            <a class="button secondary" href="#contact">Contact Us</a>
+          </div>
+        </div>
+        <div class="card">
+          <h2>What to expect</h2>
+          <ul>
+            <li>30-60 minute strategy sessions tailored to your goals.</li>
+            <li>Actionable playbooks you can implement immediately.</li>
+            <li>Follow-up notes and curated resources after each meeting.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="services">
+        <h2 class="section-title">Popular services</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Launch planning</h3>
+            <p>
+              Roadmap for your next launch, including timelines, budgets, and
+              marketing priorities.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Client systems</h3>
+            <p>
+              Set up intake workflows, follow-up sequences, and client
+              experience templates.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Productivity coaching</h3>
+            <p>
+              Weekly check-ins to keep your side hustle on track with realistic
+              goals and accountability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact us</h2>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>General inquiries</h3>
+            <p>Email: <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
+            <p>Business hours: Monday-Friday, 9am-6pm</p>
+          </div>
+          <div class="card">
+            <h3>Schedule a session</h3>
+            <p>
+              Ready to book? Fill out our appointment form and we will follow up
+              within 1 business day.
+            </p>
+            <a
+              class="button"
+              href="https://forms.yourdomain.com/appointment"
+              target="_blank"
+              rel="noopener"
+            >
+              Open Appointment Form
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="legal">
+        <h2 class="section-title">Legal &amp; policies</h2>
+        <div class="card">
+          <h3>Terms of service</h3>
+          <p class="legal">
+            By booking an appointment, you agree to our service terms. Sessions
+            must be canceled or rescheduled at least 24 hours in advance to
+            avoid a cancellation fee. We reserve the right to refuse service to
+            anyone engaging in unlawful or abusive behavior.
+          </p>
+          <h3>Privacy policy</h3>
+          <p class="legal">
+            We collect your name, contact details, and appointment preferences
+            when you submit our forms. We use this information to schedule and
+            deliver services. We never sell your personal information. You can
+            request data deletion by emailing
+            <a href="mailto:privacy@yourdomain.com">privacy@yourdomain.com</a>.
+          </p>
+          <h3>Disclaimer</h3>
+          <p class="legal">
+            Our guidance is for informational purposes and does not constitute
+            legal, tax, or financial advice. Results may vary based on your
+            effort, market conditions, and other factors.
+          </p>
+          <h3>Accessibility</h3>
+          <p class="legal">
+            If you need accommodations or an alternative format, please contact
+            us at <a href="mailto:accessibility@yourdomain.com">accessibility@yourdomain.com</a>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2024 Side Hustle Studio. All rights reserved. | <a href="#legal">Legal</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
