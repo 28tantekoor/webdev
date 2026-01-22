@@ -1,314 +1,1084 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Side Hustle Studio | Book an Appointment</title>
-    <meta
-      name="description"
-      content="Side Hustle Studio helps you get expert support fast. Book an appointment or contact us to get started."
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lost Kingdom - Platformer Quest Adventure</title>
     <style>
-      :root {
-        color-scheme: light;
-        --bg: #f7f7fb;
-        --card: #ffffff;
-        --text: #1d1f24;
-        --muted: #5a6270;
-        --accent: #5b5bff;
-        --accent-dark: #3a3acc;
-        --border: #e2e6ee;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
-
-      header {
-        background: var(--card);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .container {
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 0;
-      }
-
-      .logo {
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-      }
-
-      .nav a {
-        text-decoration: none;
-        color: var(--text);
-        margin-left: 16px;
-        font-weight: 500;
-      }
-
-      .hero {
-        display: grid;
-        gap: 32px;
-        padding: 64px 0;
-        align-items: center;
-      }
-
-      .hero-content h1 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 16px;
-      }
-
-      .hero-content p {
-        color: var(--muted);
-        margin-bottom: 24px;
-      }
-
-      .cta {
-        display: inline-flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .button {
-        background: var(--accent);
-        color: #fff;
-        padding: 12px 24px;
-        border-radius: 999px;
-        text-decoration: none;
-        font-weight: 600;
-        display: inline-block;
-      }
-
-      .button.secondary {
-        background: #ffffff;
-        color: var(--accent);
-        border: 2px solid var(--accent);
-      }
-
-      .button:hover {
-        background: var(--accent-dark);
-      }
-
-      .button.secondary:hover {
-        background: #f3f4ff;
-      }
-
-      .card-grid {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        margin-bottom: 64px;
-      }
-
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-      }
-
-      .card h3 {
-        margin-top: 0;
-      }
-
-      .section-title {
-        font-size: 1.75rem;
-        margin-bottom: 24px;
-      }
-
-      .contact-grid {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-
-      .legal {
-        font-size: 0.95rem;
-        color: var(--muted);
-      }
-
-      footer {
-        padding: 32px 0 48px;
-        border-top: 1px solid var(--border);
-        margin-top: 64px;
-      }
-
-      footer a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      .tag {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 999px;
-        background: #eef0ff;
-        color: var(--accent-dark);
-        font-size: 0.8rem;
-        margin-bottom: 16px;
-      }
-
-      @media (min-width: 900px) {
-        .hero {
-          grid-template-columns: repeat(2, 1fr);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            padding: 10px;
+        }
+
+        #gameWrapper {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            max-height: 90vh;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+            border: 3px solid #333;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #player {
+            position: absolute;
+            width: 28px;
+            height: 40px;
+            z-index: 50;
+        }
+
+        .playerBody {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .playerHead {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #f4a460;
+            border: 2px solid #8b6f47;
+            border-radius: 50%;
+            top: 2px;
+            left: 8px;
+        }
+
+        .playerTorso {
+            position: absolute;
+            width: 14px;
+            height: 12px;
+            background: linear-gradient(90deg, #2563eb, #1e40af);
+            border: 1px solid #1e3a8a;
+            top: 14px;
+            left: 7px;
+        }
+
+        .playerArm {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #f4a460;
+            top: 15px;
+        }
+
+        .playerArmLeft {
+            left: 4px;
+            animation: armSwingLeft 0.6s ease-in-out infinite;
+        }
+
+        .playerArmRight {
+            right: 4px;
+            animation: armSwingRight 0.6s ease-in-out infinite;
+        }
+
+        .playerLeg {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #2c2c2c;
+            border: 1px solid #000;
+            bottom: 2px;
+        }
+
+        .playerLegLeft {
+            left: 8px;
+            animation: legStride 0.6s ease-in-out infinite;
+        }
+
+        .playerLegRight {
+            right: 8px;
+            animation: legStride 0.6s ease-in-out infinite reverse;
+        }
+
+        .weapon {
+            position: absolute;
+            width: 6px;
+            height: 2px;
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            top: 18px;
+            right: 2px;
+            transform-origin: left center;
+        }
+
+        @keyframes armSwingLeft {
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(30deg); }
+        }
+
+        @keyframes armSwingRight {
+            0%, 100% { transform: rotate(30deg); }
+            50% { transform: rotate(-20deg); }
+        }
+
+        @keyframes legStride {
+            0%, 100% { transform: skewY(-5deg); }
+            50% { transform: skewY(5deg); }
+        }
+
+        @keyframes attack {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(45deg); }
+        }
+
+        .abilityActive {
+            box-shadow: 0 0 15px rgba(100, 200, 255, 0.8) !important;
+        }
+
+        .platform {
+            position: absolute;
+            background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%);
+            border: 3px solid #0d4d0d;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        .platform::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            border-radius: 5px 5px 0 0;
+        }
+
+        .hazard {
+            position: absolute;
+            background: #ff3333;
+            border: 2px solid #cc0000;
+            border-radius: 3px;
+        }
+
+        .enemy {
+            position: absolute;
+            width: 28px;
+            height: 40px;
+            z-index: 40;
+        }
+
+        .enemyHead {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #8b4513;
+            border: 2px solid #654321;
+            border-radius: 50%;
+            top: 2px;
+            left: 8px;
+        }
+
+        .enemyEye {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            top: 5px;
+        }
+
+        .enemyEyeLeft {
+            left: 5px;
+        }
+
+        .enemyEyeRight {
+            right: 5px;
+        }
+
+        .enemyTorso {
+            position: absolute;
+            width: 14px;
+            height: 12px;
+            background: linear-gradient(90deg, #8B0000, #660000);
+            border: 1px solid #4a0000;
+            top: 14px;
+            left: 7px;
+        }
+
+        .enemyArm {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #8b4513;
+            top: 15px;
+        }
+
+        .enemyArmLeft {
+            left: 4px;
+        }
+
+        .enemyArmRight {
+            right: 4px;
+        }
+
+        .enemyLeg {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #1a1a1a;
+            border: 1px solid #000;
+            bottom: 2px;
+        }
+
+        .enemyLegLeft {
+            left: 8px;
+        }
+
+        .enemyLegRight {
+            right: 8px;
+        }
+
+        .npc {
+            position: absolute;
+            width: 28px;
+            height: 40px;
+            z-index: 40;
+        }
+
+        .npcHead {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #f4a460;
+            border: 2px solid #8b6f47;
+            border-radius: 50%;
+            top: 2px;
+            left: 8px;
+        }
+
+        .npcTorso {
+            position: absolute;
+            width: 14px;
+            height: 12px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            border: 1px solid #DAA520;
+            top: 14px;
+            left: 7px;
+        }
+
+        .npcArm {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #f4a460;
+            top: 15px;
+        }
+
+        .npcArmLeft {
+            left: 4px;
+        }
+
+        .npcArmRight {
+            right: 4px;
+        }
+
+        .npcLeg {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #333;
+            border: 1px solid #000;
+            bottom: 2px;
+        }
+
+        .npcLegLeft {
+            left: 8px;
+        }
+
+        .npcLegRight {
+            right: 8px;
+        }
+
+        .collectible {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle at 30% 30%, #FFFF00, #FFD700);
+            border: 2px solid #DAA520;
+            border-radius: 50%;
+            z-index: 35;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        #hud {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+        #hud > div {
+            margin: 5px 0;
+        }
+
+        #abilities {
+            position: absolute;
+            bottom: 80px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 100;
+            font-size: 11px;
+            border: 2px solid #00ff00;
+        }
+
+        .abilityItem {
+            margin: 4px 0;
+            padding: 3px;
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        .abilityCD {
+            color: #ff4444;
+        }
+
+        #questLog {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFD700;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 100;
+            max-width: 250px;
+            font-size: 11px;
+            border: 2px solid #FFD700;
+        }
+
+        .questItem {
+            margin: 5px 0;
+            padding: 5px;
+            background: rgba(50, 50, 50, 0.8);
+            border-left: 3px solid #FFD700;
+        }
+
+        .questComplete {
+            color: #00FF00;
+            text-decoration: line-through;
+        }
+
+        .dialogueBox {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: #FFD700;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 100;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #FFD700;
+            display: none;
+            max-height: 80px;
+            overflow-y: auto;
+        }
+
+        #endGameScreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 200;
+            display: none;
+            border: 3px solid #FFD700;
+        }
+
+        #endGameScreen h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        #endGameScreen p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        #endGameScreen button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #endGameScreen button:hover {
+            background: #ff5252;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <div class="container nav">
-        <div class="logo">Side Hustle Studio</div>
-        <nav>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-          <a href="#legal">Legal</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="container">
-      <section class="hero">
-        <div class="hero-content">
-          <span class="tag">Now booking appointments</span>
-          <h1>Make your side hustle feel effortless.</h1>
-          <p>
-            We help busy founders, freelancers, and local brands run their
-            side-hustle operations with clarity. Book a session or reach out for
-            a customized plan.
-          </p>
-          <div class="cta">
-            <a
-              class="button"
-              href="https://forms.yourdomain.com/appointment"
-              target="_blank"
-              rel="noopener"
-            >
-              Schedule an Appointment
-            </a>
-            <a class="button secondary" href="#contact">Contact Us</a>
-          </div>
+</head>
+<body>
+    <div id="gameWrapper">
+        <div id="gameContainer"></div>
+        <div id="hud">
+            <div>Level: <span id="currentLevel">Village Square</span></div>
+            <div>Health: <span id="health">100</span>/100</div>
+            <div>Weapon: <span id="weapon">Sword</span></div>
+            <div>Gold: <span id="gold">0</span></div>
+            <div>Items: <span id="inventory">0</span></div>
         </div>
-        <div class="card">
-          <h2>What to expect</h2>
-          <ul>
-            <li>30-60 minute strategy sessions tailored to your goals.</li>
-            <li>Actionable playbooks you can implement immediately.</li>
-            <li>Follow-up notes and curated resources after each meeting.</li>
-          </ul>
+        <div id="abilities">
+            <strong>Abilities:</strong>
+            <div id="abilitiesList"></div>
         </div>
-      </section>
-
-      <section id="services">
-        <h2 class="section-title">Popular services</h2>
-        <div class="card-grid">
-          <div class="card">
-            <h3>Launch planning</h3>
-            <p>
-              Roadmap for your next launch, including timelines, budgets, and
-              marketing priorities.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Client systems</h3>
-            <p>
-              Set up intake workflows, follow-up sequences, and client
-              experience templates.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Productivity coaching</h3>
-            <p>
-              Weekly check-ins to keep your side hustle on track with realistic
-              goals and accountability.
-            </p>
-          </div>
+        <div id="questLog">
+            <strong>Active Quests:</strong>
+            <div id="quests"></div>
         </div>
-      </section>
-
-      <section id="contact">
-        <h2 class="section-title">Contact us</h2>
-        <div class="contact-grid">
-          <div class="card">
-            <h3>General inquiries</h3>
-            <p>Email: <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
-            <p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
-            <p>Business hours: Monday-Friday, 9am-6pm</p>
-          </div>
-          <div class="card">
-            <h3>Schedule a session</h3>
-            <p>
-              Ready to book? Fill out our appointment form and we will follow up
-              within 1 business day.
-            </p>
-            <a
-              class="button"
-              href="https://forms.yourdomain.com/appointment"
-              target="_blank"
-              rel="noopener"
-            >
-              Open Appointment Form
-            </a>
-          </div>
+        <div id="dialogueBox"></div>
+        <div id="endGameScreen">
+            <h1 id="endTitle">Victory!</h1>
+            <p id="endMessage"></p>
+            <p>Final Stats:</p>
+            <p>Gold Collected: <span id="finalGold">0</span></p>
+            <p>Time Played: <span id="finalTime">0:00</span></p>
+            <button onclick="location.reload()">Play Again</button>
         </div>
-      </section>
+    </div>
 
-      <section id="legal">
-        <h2 class="section-title">Legal &amp; policies</h2>
-        <div class="card">
-          <h3>Terms of service</h3>
-          <p class="legal">
-            By booking an appointment, you agree to our service terms. Sessions
-            must be canceled or rescheduled at least 24 hours in advance to
-            avoid a cancellation fee. We reserve the right to refuse service to
-            anyone engaging in unlawful or abusive behavior.
-          </p>
-          <h3>Privacy policy</h3>
-          <p class="legal">
-            We collect your name, contact details, and appointment preferences
-            when you submit our forms. We use this information to schedule and
-            deliver services. We never sell your personal information. You can
-            request data deletion by emailing
-            <a href="mailto:privacy@yourdomain.com">privacy@yourdomain.com</a>.
-          </p>
-          <h3>Disclaimer</h3>
-          <p class="legal">
-            Our guidance is for informational purposes and does not constitute
-            legal, tax, or financial advice. Results may vary based on your
-            effort, market conditions, and other factors.
-          </p>
-          <h3>Accessibility</h3>
-          <p class="legal">
-            If you need accommodations or an alternative format, please contact
-            us at <a href="mailto:accessibility@yourdomain.com">accessibility@yourdomain.com</a>.
-          </p>
-        </div>
-      </section>
-    </main>
+    <script>
+        const gameContainer = document.getElementById('gameContainer');
+        const hud = document.getElementById('hud');
+        const questLog = document.getElementById('quests');
+        const dialogueBox = document.getElementById('dialogueBox');
+        const abilitiesList = document.getElementById('abilitiesList');
 
-    <footer>
-      <div class="container">
-        <p>
-          &copy; 2024 Side Hustle Studio. All rights reserved. | <a href="#legal">Legal</a>
-        </p>
-      </div>
-    </footer>
-  </body>
+        // Game state
+        let gameRunning = true;
+        let startTime = Date.now();
+
+        // Ability system
+        const abilities = {
+            slash: { key: 'q', name: 'Slash', cooldown: 0, maxCooldown: 15, damage: 15 },
+            powerStrike: { key: 'e', name: 'Power Strike', cooldown: 0, maxCooldown: 30, damage: 30 },
+            shield: { key: 'f', name: 'Shield', cooldown: 0, maxCooldown: 40, duration: 150, active: false },
+            dash: { key: 'space', name: 'Dash', cooldown: 0, maxCooldown: 20 }
+        };
+
+        // Player object
+        const player = {
+            x: 100,
+            y: 300,
+            width: 28,
+            height: 40,
+            velocityY: 0,
+            velocityX: 0,
+            jumping: false,
+            speed: 4,
+            jumpPower: 13,
+            gravity: 0.5,
+            health: 100,
+            maxHealth: 100,
+            gold: 0,
+            inventory: 0,
+            level: 0,
+            questsCompleted: [],
+            weapon: 'Sword',
+            attacking: false,
+            shielded: false,
+            direction: 1
+        };
+
+        const playerEl = document.createElement('div');
+        playerEl.id = 'player';
+        gameContainer.appendChild(playerEl);
+
+        // Create player character HTML
+        function createPlayerSprite() {
+            playerEl.innerHTML = `
+                <div class="playerBody">
+                    <div class="playerHead"></div>
+                    <div class="playerTorso"></div>
+                    <div class="playerArm playerArmLeft"></div>
+                    <div class="playerArm playerArmRight"></div>
+                    <div class="playerLeg playerLegLeft"></div>
+                    <div class="playerLeg playerLegRight"></div>
+                    <div class="weapon" id="playerWeapon"></div>
+                </div>
+            `;
+        }
+
+        // Create enemy character HTML
+        function createEnemySprite(el) {
+            el.innerHTML = `
+                <div class="enemyHead">
+                    <div class="enemyEye enemyEyeLeft"></div>
+                    <div class="enemyEye enemyEyeRight"></div>
+                </div>
+                <div class="enemyTorso"></div>
+                <div class="enemyArm enemyArmLeft"></div>
+                <div class="enemyArm enemyArmRight"></div>
+                <div class="enemyLeg enemyLegLeft"></div>
+                <div class="enemyLeg enemyLegRight"></div>
+            `;
+        }
+
+        // Create NPC character HTML
+        function createNPCSprite(el) {
+            el.innerHTML = `
+                <div class="npcHead"></div>
+                <div class="npcTorso"></div>
+                <div class="npcArm npcArmLeft"></div>
+                <div class="npcArm npcArmRight"></div>
+                <div class="npcLeg npcLegLeft"></div>
+                <div class="npcLeg npcLegRight"></div>
+            `;
+        }
+
+        // Update abilities UI
+        function updateAbilitiesUI() {
+            abilitiesList.innerHTML = '';
+            Object.entries(abilities).forEach(([key, ability]) => {
+                const abilityEl = document.createElement('div');
+                abilityEl.className = 'abilityItem';
+                const cdText = ability.cooldown > 0 ? `<span class="abilityCD"> CD: ${Math.ceil(ability.cooldown)}</span>` : '';
+                abilityEl.innerHTML = `<strong>${ability.key.toUpperCase()}</strong> - ${ability.name}${cdText}`;
+                abilitiesList.appendChild(abilityEl);
+            });
+        }
+
+        // Levels definition
+        const levels = [
+            {
+                name: 'Village Square',
+                background: 'linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%)',
+                platforms: [
+                    { x: 0, y: 750, width: 1200, height: 50 },
+                    { x: 100, y: 680, width: 200, height: 25 },
+                    { x: 500, y: 620, width: 200, height: 25 },
+                    { x: 150, y: 560, width: 200, height: 25 },
+                    { x: 550, y: 500, width: 200, height: 25 },
+                    { x: 300, y: 440, width: 250, height: 25 },
+                    { x: 100, y: 360, width: 200, height: 25 },
+                    { x: 600, y: 300, width: 200, height: 25 },
+                    { x: 350, y: 200, width: 250, height: 25 },
+                ],
+                npcs: [
+                    { x: 100, y: 640, name: 'Elder', quest: 0, dialogue: 'Welcome! The kingdom needs your help.' }
+                ],
+                enemies: [
+                    { x: 800, y: 730, speed: 1, range: [700, 900], type: 'goblin' }
+                ],
+                collectibles: [
+                    { x: 500, y: 580, id: 'gem1' },
+                    { x: 550, y: 460, id: 'gem2' }
+                ],
+                quests: [
+                    { id: 0, npc: 'Elder', title: 'Meet the Elder', description: 'Talk to the Elder', reward: 50 }
+                ]
+            },
+            {
+                name: 'Dark Forest',
+                background: 'linear-gradient(180deg, #2d5016 0%, #1a3a0f 100%)',
+                platforms: [
+                    { x: 0, y: 750, width: 1200, height: 50 },
+                    { x: 50, y: 680, width: 200, height: 25 },
+                    { x: 400, y: 620, width: 200, height: 25 },
+                    { x: 750, y: 560, width: 200, height: 25 },
+                    { x: 150, y: 500, width: 200, height: 25 },
+                    { x: 600, y: 440, width: 200, height: 25 },
+                    { x: 300, y: 380, width: 250, height: 25 },
+                    { x: 700, y: 300, width: 200, height: 25 },
+                    { x: 400, y: 200, width: 250, height: 25 },
+                ],
+                npcs: [
+                    { x: 400, y: 580, name: 'Ranger', quest: 1, dialogue: 'Beware of the creatures here!' }
+                ],
+                enemies: [
+                    { x: 900, y: 680, speed: 1.5, range: [800, 1000], type: 'goblin', health: 20 },
+                    { x: 300, y: 730, speed: 1.2, range: [200, 400], type: 'skeleton', health: 30 }
+                ],
+                collectibles: [
+                    { x: 750, y: 520, id: 'gem3' },
+                    { x: 150, y: 460, id: 'gem4' },
+                    { x: 600, y: 400, id: 'gem5' }
+                ],
+                quests: [
+                    { id: 1, npc: 'Ranger', title: 'Explore Forest', description: 'Collect 3 gems in Dark Forest', reward: 100 }
+                ]
+            },
+            {
+                name: 'Mountain Pass',
+                background: 'linear-gradient(180deg, #8B7355 0%, #654321 100%)',
+                platforms: [
+                    { x: 0, y: 750, width: 1200, height: 50 },
+                    { x: 80, y: 680, width: 200, height: 25 },
+                    { x: 400, y: 620, width: 200, height: 25 },
+                    { x: 700, y: 560, width: 200, height: 25 },
+                    { x: 200, y: 500, width: 200, height: 25 },
+                    { x: 600, y: 440, width: 200, height: 25 },
+                    { x: 350, y: 360, width: 250, height: 25 },
+                    { x: 800, y: 280, width: 200, height: 25 },
+                    { x: 400, y: 180, width: 250, height: 25 },
+                ],
+                npcs: [
+                    { x: 700, y: 520, name: 'Climber', quest: 2, dialogue: 'This mountain is treacherous!' }
+                ],
+                enemies: [
+                    { x: 200, y: 730, speed: 1.8, range: [100, 300], type: 'orc', health: 40 },
+                    { x: 800, y: 700, speed: 2, range: [700, 900], type: 'goblin', health: 25 }
+                ],
+                collectibles: [
+                    { x: 700, y: 520, id: 'gem6' },
+                    { x: 200, y: 460, id: 'gem7' },
+                    { x: 600, y: 400, id: 'gem8' }
+                ],
+                quests: [
+                    { id: 2, npc: 'Climber', title: 'Climb Mountain', description: 'Reach the mountain top', reward: 150 }
+                ]
+            },
+            {
+                name: 'Castle Ruins',
+                background: 'linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%)',
+                platforms: [
+                    { x: 0, y: 750, width: 1200, height: 50 },
+                    { x: 100, y: 680, width: 200, height: 25 },
+                    { x: 450, y: 620, width: 200, height: 25 },
+                    { x: 750, y: 560, width: 200, height: 25 },
+                    { x: 200, y: 500, width: 200, height: 25 },
+                    { x: 650, y: 440, width: 200, height: 25 },
+                    { x: 350, y: 360, width: 250, height: 25 },
+                    { x: 750, y: 280, width: 200, height: 25 },
+                    { x: 400, y: 180, width: 250, height: 25 },
+                ],
+                npcs: [
+                    { x: 650, y: 400, name: 'King', quest: 3, dialogue: 'You have proven yourself worthy!' }
+                ],
+                enemies: [
+                    { x: 200, y: 730, speed: 2, range: [100, 300], type: 'skeleton', health: 35 },
+                    { x: 900, y: 700, speed: 2.2, range: [800, 1000], type: 'orc', health: 50 },
+                    { x: 500, y: 650, speed: 1.8, range: [400, 600], type: 'goblin', health: 25 }
+                ],
+                collectibles: [
+                    { x: 750, y: 520, id: 'gem9' },
+                    { x: 200, y: 460, id: 'gem10' },
+                    { x: 650, y: 400, id: 'gem11' },
+                    { x: 400, y: 140, id: 'crown' }
+                ],
+                quests: [
+                    { id: 3, npc: 'King', title: 'Final Quest', description: 'Claim the crown and save the kingdom!', reward: 500 }
+                ]
+            }
+        ];
+
+        let platformElements = [];
+        let npcElements = [];
+        let enemyObjects = [];
+        let collectibleElements = [];
+        let currentLevelObj = null;
+
+        // Input handling
+        const keys = {};
+        window.addEventListener('keydown', (e) => {
+            keys[e.key.toLowerCase()] = true;
+            
+            // Dash/Jump
+            if ((e.key === ' ' || e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') && !player.jumping) {
+                player.velocityY = -player.jumpPower;
+                player.jumping = true;
+                if (e.key === ' ' && abilities.dash.cooldown <= 0) {
+                    player.velocityX = player.direction * 8;
+                    abilities.dash.cooldown = abilities.dash.maxCooldown;
+                }
+            }
+            
+            // Abilities
+            if (e.key.toLowerCase() === 'q' && abilities.slash.cooldown <= 0) {
+                performAbility('slash');
+            }
+            if (e.key.toLowerCase() === 'e' && abilities.powerStrike.cooldown <= 0) {
+                performAbility('powerStrike');
+            }
+            if (e.key.toLowerCase() === 'f' && abilities.shield.cooldown <= 0) {
+                performAbility('shield');
+            }
+        });
+        window.addEventListener('keyup', (e) => {
+            keys[e.key.toLowerCase()] = false;
+        });
+
+        // Perform ability
+        function performAbility(abilityName) {
+            const ability = abilities[abilityName];
+            if (!ability || ability.cooldown > 0) return;
+
+            player.attacking = true;
+            setTimeout(() => { player.attacking = false; }, 100);
+
+            switch(abilityName) {
+                case 'slash':
+                    ability.cooldown = ability.maxCooldown;
+                    damageNearbyEnemies(ability.damage);
+                    break;
+                case 'powerStrike':
+                    ability.cooldown = ability.maxCooldown;
+                    damageNearbyEnemies(ability.damage);
+                    break;
+                case 'shield':
+                    ability.cooldown = ability.maxCooldown;
+                    player.shielded = true;
+                    player.health = Math.min(player.health + 20, player.maxHealth);
+                    setTimeout(() => { player.shielded = false; }, ability.duration);
+                    break;
+            }
+        }
+
+        // Damage nearby enemies
+        function damageNearbyEnemies(damage) {
+            enemyObjects.forEach(enemy => {
+                const distance = Math.hypot(
+                    (enemy.x + enemy.width/2) - (player.x + player.width/2),
+                    (enemy.y + enemy.height/2) - (player.y + player.height/2)
+                );
+                if (distance < 80) {
+                    enemy.health -= damage;
+                    if (enemy.health <= 0) {
+                        enemy.dead = true;
+                        player.gold += 25;
+                        player.inventory++;
+                    }
+                }
+            });
+        }
+
+        // Collision detection
+        function checkCollision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.width &&
+                   obj1.x + obj1.width > obj2.x &&
+                   obj1.y < obj2.y + obj2.height &&
+                   obj1.y + obj1.height > obj2.y;
+        }
+
+        // Load level
+        function loadLevel(levelIndex) {
+            player.level = levelIndex;
+            currentLevelObj = levels[levelIndex];
+            gameContainer.style.background = currentLevelObj.background;
+            document.getElementById('currentLevel').textContent = currentLevelObj.name;
+
+            // Clear previous elements
+            platformElements.forEach(el => el.remove());
+            npcElements.forEach(el => el.remove());
+            collectibleElements.forEach(el => el.remove());
+            platformElements = [];
+            npcElements = [];
+            collectibleElements = [];
+            enemyObjects = [];
+
+            // Create platforms
+            currentLevelObj.platforms.forEach(platform => {
+                const platformEl = document.createElement('div');
+                platformEl.className = 'platform';
+                platformEl.style.left = platform.x + 'px';
+                platformEl.style.top = platform.y + 'px';
+                platformEl.style.width = platform.width + 'px';
+                platformEl.style.height = platform.height + 'px';
+                gameContainer.appendChild(platformEl);
+                platformElements.push(platformEl);
+            });
+
+            // Create NPCs
+            currentLevelObj.npcs.forEach(npc => {
+                const npcEl = document.createElement('div');
+                npcEl.className = 'npc';
+                createNPCSprite(npcEl);
+                npcEl.style.left = npc.x + 'px';
+                npcEl.style.top = npc.y + 'px';
+                npcEl.npcData = npc;
+                gameContainer.appendChild(npcEl);
+                npcElements.push(npcEl);
+            });
+
+            // Create collectibles
+            currentLevelObj.collectibles.forEach(item => {
+                const collectEl = document.createElement('div');
+                collectEl.className = 'collectible';
+                collectEl.style.left = item.x + 'px';
+                collectEl.style.top = item.y + 'px';
+                collectEl.itemId = item.id;
+                gameContainer.appendChild(collectEl);
+                collectibleElements.push(collectEl);
+            });
+
+            // Create enemies
+            currentLevelObj.enemies.forEach(enemy => {
+                const enemyEl = document.createElement('div');
+                enemyEl.className = 'enemy';
+                createEnemySprite(enemyEl);
+                enemyEl.style.left = enemy.x + 'px';
+                enemyEl.style.top = enemy.y + 'px';
+                gameContainer.appendChild(enemyEl);
+                enemyObjects.push({
+                    x: enemy.x,
+                    y: enemy.y,
+                    width: 28,
+                    height: 40,
+                    speed: enemy.speed,
+                    range: enemy.range,
+                    direction: 1,
+                    element: enemyEl,
+                    type: enemy.type || 'goblin',
+                    health: enemy.health || 20,
+                    dead: false
+                });
+            });
+        }
+
+        // Update player
+        function updatePlayer() {
+            // Movement
+            if (keys['a'] || keys['arrowleft']) {
+                player.x -= player.speed;
+                player.direction = -1;
+            }
+            if (keys['d'] || keys['arrowright']) {
+                player.x += player.speed;
+                player.direction = 1;
+            }
+
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > gameContainer.offsetWidth) {
+                player.x = gameContainer.offsetWidth - player.width;
+            }
+
+            // Decelerate after dash
+            if (Math.abs(player.velocityX) > 0) {
+                player.velocityX *= 0.95;
+                player.x += player.velocityX;
+            }
+
+            // Gravity
+            player.velocityY += player.gravity;
+            player.y += player.velocityY;
+
+            // Collision with platforms
+            let onPlatform = false;
+            currentLevelObj.platforms.forEach(platform => {
+                if (checkCollision(player, platform)) {
+                    if (player.velocityY > 0 && player.y + player.height - player.velocityY <= platform.y + 5) {
+                        player.y = platform.y - player.height;
+                        player.velocityY = 0;
+                        player.jumping = false;
+                        onPlatform = true;
+                    }
+                }
+            });
+
+            // Check collectibles
+            collectibleElements = collectibleElements.filter(collectEl => {
+                if (checkCollision(player, { x: parseInt(collectEl.style.left), y: parseInt(collectEl.style.top), width: 15, height: 15 })) {
+                    player.gold += 25;
+                    player.inventory++;
+                    collectEl.remove();
+                    return false;
+                }
+                return true;
+            });
+
+            // Check NPCs
+            npcElements.forEach(npcEl => {
+                const npcPos = { x: parseInt(npcEl.style.left), y: parseInt(npcEl.style.top), width: 28, height: 40 };
+                if (checkCollision(player, npcPos)) {
+                    const npcData = npcEl.npcData;
+                    if (!player.questsCompleted.includes(npcData.quest)) {
+                        showDialogue(npcData.dialogue);
+                        player.questsCompleted.push(npcData.quest);
+                        player.gold += levels[player.level].quests.find(q => q.id === npcData.quest).reward;
+                        updateQuestLog();
+                    }
+                }
+            });
+
+            // Check enemies
+            enemyObjects.forEach(enemy => {
+                if (!enemy.dead && checkCollision(player, enemy)) {
+                    if (!player.shielded) {
+                        player.health -= 5;
+                    }
+                    player.y -= 50;
+                    player.velocityY = -player.jumpPower;
+                }
+            });
+
+            // Fall damage/game over
+            if (player.y > gameContainer.offsetHeight) {
+                player.health = 0;
+            }
+
+            if (player.health <= 0) {
+                endGame(false);
+            }
+
+            // Check level completion
+            if (player.level < levels.length - 1 && player.y < 100) {
+                loadLevel(player.level + 1);
+                player.x = 100;
+                player.y = gameContainer.offsetHeight - 200;
+            }
+
+            // Final level completion
+            if (player.level === levels.length - 1 && player.inventory >= 4) {
+                endGame(true);
+            }
+
+            // Update HUD
+            document.getElementById('health').textContent = player.health;
+            document.getElementById('gold').textContent = player.gold;
+            document.getElementById('inventory').textContent = player.inventory;
+            document.getElementById('weapon').textContent = player.weapon;
+            
+            // Update cooldowns
+            updateAbilityCooldowns();
+            updateAbilitiesUI();
+
+            // Update player display
+            playerEl.style.left = player.x + 'px';
+            playerEl.style.top = player.y + 'px';
+            if (player.shielded) {
+                playerEl.classList.add('abilityActive');
+            } else {
+                playerEl.classList.remove('abilityActive');
+            }
+        }
+
+        // Update ability cooldowns
+        function updateAbilityCooldowns() {
+            Object.values(abilities).forEach(ability => {
+                if (ability.cooldown > 0) {
+                    ability.cooldown -= 0.016;
+                }
+            });
+        }
+
+        // Update enemies
+        function updateEnemies() {
+            enemyObjects = enemyObjects.filter(enemy => !enemy.dead || true);
+            
+            enemyObjects.forEach(enemy => {
+                if (enemy.dead) {
+                    enemy.element.style.opacity = '0';
+                    return;
+                }
+                
+                enemy.x += enemy.speed * enemy.direction;
+                if (enemy.x <= enemy.range[0] || enemy.x >= enemy.range[1]) {
+                    enemy.direction *= -1;
+                }
+                enemy.element.style.left = enemy.x + 'px';
+            });
+        }
+
+        // Show dialogue
+        function showDialogue(text) {
+            dialogueBox.textContent = text;
+            dialogueBox.style.display = 'block';
+            setTimeout(() => {
+                dialogueBox.style.display = 'none';
+            }, 3000);
+        }
+
+        // Update quest log
+        function updateQuestLog() {
+            questLog.innerHTML = '';
+            currentLevelObj.quests.forEach(quest => {
+                const questEl = document.createElement('div');
+                questEl.className = 'questItem';
+                if (player.questsCompleted.includes(quest.id)) {
+                    questEl.classList.add('questComplete');
+                }
+                questEl.textContent = quest.title + ': ' + quest.description;
+                questLog.appendChild(questEl);
+            });
+        }
+
+        // End game
+        function endGame(won) {
+            gameRunning = false;
+            const endScreen = document.getElementById('endGameScreen');
+            const endTitle = document.getElementById('endTitle');
+            const endMessage = document.getElementById('endMessage');
+            const finalGold = document.getElementById('finalGold');
+            const finalTime = document.getElementById('finalTime');
+
+            if (won) {
+                endTitle.textContent = 'KINGDOM SAVED!';
+                endMessage.textContent = 'You have completed the quest and restored peace to the land!';
+            } else {
+                endTitle.textContent = 'GAME OVER';
+                endMessage.textContent = 'You were defeated. Better luck next time!';
+            }
+
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            finalTime.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+            finalGold.textContent = player.gold;
+            endScreen.style.display = 'block';
+        }
+
+        // Game loop
+        function gameLoop() {
+            if (gameRunning) {
+                updatePlayer();
+                updateEnemies();
+            }
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Initialize
+        createPlayerSprite();
+        loadLevel(0);
+        updateQuestLog();
+        updateAbilitiesUI();
+        gameLoop();
+    </script>
+</body>
 </html>
