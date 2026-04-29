@@ -1,6 +1,6 @@
 body {
     background-color: rgb(31, 212, 31);
-    
+
 }
 
 head {
@@ -8,5 +8,26 @@ head {
 }
 
 video {
-    width: 200px;
+    width: 300px;
+    height: 200px;
+    padding: 50px;
+    margin: 50px;
+}
+
+audio {
+    width: 300px;
+    height: 300px;
+    padding: 50px;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+    margin: 50px;
+
+}
+
+iframe {
+    height: 400px;
+    width: 400px;
 }
